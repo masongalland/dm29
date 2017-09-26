@@ -21,7 +21,17 @@ Each employee can:
 
 call your class Employee and receive all the data in the constructor in the order listed
 */
-
+ class Employee {
+     constructor(first_name, last_name, email, age){
+         this.first_name = first_name;
+         this.last_name = last_name;
+         this.email = email;
+         this.age = age;
+     }
+     makeWidget(){
+         return `${this.first_name} ${this.last_name} Widget`
+     }
+ }
 
 
 /*
@@ -40,9 +50,21 @@ They can (methods) :
 call your class Manager
 
 */
-
-
-
+class Manager {
+    constructor(first_name, last_name, email, age){
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.age = age;
+        this.reports = [];
+    }
+    hire(emp){
+        this.reports.push(emp)
+    }
+    fire(index){
+        this.reports.splice(index, 1)
+    }
+}
 
 
 /*
@@ -64,6 +86,55 @@ Everytime they fire an employee they get a bonus of $100 add to their .
 
 call you class ProgressiveManager
 */
+
+class ProgressiveManager {
+    constructor(first_name, last_name, email, age){
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.age = age;
+        this.reports = [];
+        this.title = 'Not a manager';
+        this.bonus = 0;
+    }
+    update(){
+        var l = this.reports.length;
+        var t;
+        switch (true) {
+            case l < 1:
+                t = "Not a manager";
+                break;
+            case l > 0 && l < 4:
+                t = "Barely Manager";
+                break;
+            case l > 3 && l < 11:
+                t = "Mostly Manager";
+                break;
+            case l > 10 && l < 51:
+                t = "Manager"
+                break;
+            case l > 50 && l < 101:
+                t = "Manager Plus";
+                break;
+            case l > 100:
+                t ="Bestest Manager";
+                break;
+            default:
+                t = "Not a manager";
+        }
+        this.title = t;
+    }
+
+    hire(emp){
+        this.reports.push(emp)
+        this.update()
+    }
+    fire(index){
+        this.reports.splice(index, 1)
+        this.update();
+        this.bonus += 100
+    }
+}
 
 
 
@@ -90,3 +161,27 @@ It can :
       It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 
 */
+
+class Machine {
+    constructor(){
+        this.widgets_made_count = 0;
+        this.wear_and_tear_count = 0;
+        this.needs_reboot = false;
+    }
+
+    makeWidgets(number){
+        var count = Math.floor(number / 50) 
+        this.widgets_made_count += number;
+        this.wear_and_tear_count += count;
+    }
+    fixMachine(){
+        this.needs_reboot = true;
+    }
+    reboot(){
+        var self = this;
+        return function(){
+            self.wear_and_tear_count -= 10;
+            self.needs_reboot = false;
+        }
+    }
+}
