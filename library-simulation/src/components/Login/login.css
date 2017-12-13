@@ -1,0 +1,25 @@
+.login-wrapper {
+    width: 70%;
+    margin: 55px auto;
+    padding: 30px;
+    background-color: #C6B38E;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.login-wrapper img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.login-wrapper h2 {
+    color: #4E1E29;
+}
+
+.login-form {
+    width: 70%;
+    background-color: #242325;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
