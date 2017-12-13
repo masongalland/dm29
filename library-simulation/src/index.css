@@ -21,6 +21,7 @@ h5,
 h6,
 p,
 blockquote,
+button,
 pre,
 abbr,
 address,
@@ -88,7 +89,7 @@ video {
   -moz-osx-font-smoothing: grayscale;
 }
 
-div {
+div, label {
   font-family: 'Open Sans', sans-serif;
 }
 
